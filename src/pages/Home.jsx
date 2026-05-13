@@ -6,8 +6,6 @@ import InteractiveBackground from '../components/InteractiveBackground';
 import FloatingTechIcons from '../components/FloatingTechIcons';
 import ProfileImage from '../images/TadiwaProfile.jpg';
 
-// ❌ Removed broken import
-// import AliciaImage from "../../public/aliciapic1.png";
 
 const Home = () => {
   const skills = [
