@@ -156,48 +156,124 @@ const Home = () => {
             </div>
           </section>
 
-          {/* Skills Section */}
-          <section className="py-20 px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
+
+
+
+{/* Skills Section */}
+<section className="relative py-24 px-6 lg:px-8 overflow-hidden">
+  {/* Background Glow */}
+  <div className="absolute top-0 left-0 w-72 h-72 bg-pink-200/30 rounded-full blur-3xl" />
+  <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-200/30 rounded-full blur-3xl" />
+
+  <div className="max-w-7xl mx-auto relative z-10">
+    {/* Heading */}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="text-center mb-20"
+    >
+      <motion.div
+        initial={{ scale: 0.8 }}
+        whileInView={{ scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-orange-400 text-white shadow-lg mb-6"
+      >
+        <span className="text-2xl">🚀</span>
+        <span className="font-semibold tracking-wide">Creative Developer Skills</span>
+      </motion.div>
+
+      <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+        My <span className="bg-gradient-to-r from-pink-500 to-orange-400 bg-clip-text text-transparent">Expertise</span>
+      </h2>
+
+      <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+        Building modern digital experiences with clean code, scalable systems, and beautiful user interfaces.
+      </p>
+    </motion.div>
+
+    {/* Skills Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {skills.map((skill, index) => {
+        const IconComponent = skill.icon;
+
+        const emojis = ['💻', '⚡', '🎨', '🚀', '🔥', '🧠'];
+
+        return (
+          <motion.div
+            key={skill.title}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.7,
+              delay: index * 0.12,
+              ease: 'easeOut',
+            }}
+            viewport={{ once: true }}
+            whileHover={{ y: -12 }}
+            className="group relative"
+          >
+            {/* Card Glow */}
+            <div
+              className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${skill.color} opacity-0 blur-2xl transition-all duration-500 group-hover:opacity-25`}
+            />
+
+            {/* Card */}
+            <div className="relative h-full bg-white/80 backdrop-blur-xl border border-white/40 rounded-3xl p-8 shadow-xl overflow-hidden transition-all duration-500 group-hover:shadow-2xl">
+              {/* Top Decoration */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-100 to-orange-100 rounded-full blur-2xl opacity-60" />
+
+              {/* Icon */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="text-center mb-16"
+                whileHover={{
+                  rotate: [0, -10, 10, -5, 0],
+                  scale: 1.12,
+                }}
+                transition={{ duration: 0.6 }}
+                className={`relative inline-flex items-center justify-center p-5 rounded-2xl bg-gradient-to-r ${skill.color} shadow-lg mb-6`}
               >
-                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">My Expertise</h2>
+                <IconComponent className="w-8 h-8 text-white" />
+
+                {/* Floating Emoji */}
+                <motion.span
+                  animate={{
+                    y: [0, -6, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                  }}
+                  className="absolute -top-3 -right-3 text-2xl"
+                >
+                  {emojis[index % emojis.length]}
+                </motion.span>
               </motion.div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {skills.map((skill, index) => {
-                  const IconComponent = skill.icon;
-                  return (
-                    <motion.div
-                      key={skill.title}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="group"
-                    >
-                      <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-pink-100">
-                        <motion.div
-                          className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${skill.color} mb-6 group-hover:scale-110 transition-transform duration-300`}
-                          whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <IconComponent className="w-8 h-8 text-white" />
-                        </motion.div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-4">{skill.title}</h3>
-                        <p className="text-gray-600 leading-relaxed">{skill.description}</p>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
+              {/* Title */}
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-pink-600 transition-colors duration-300">
+                {skill.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-gray-600 leading-relaxed text-[15px]">
+                {skill.description}
+              </p>
+
+              {/* Bottom Line Animation */}
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: '100%' }}
+                transition={{ duration: 1, delay: 0.2 }}
+                className={`h-1 rounded-full bg-gradient-to-r ${skill.color} mt-8`}
+              />
             </div>
-          </section>
+          </motion.div>
+        );
+      })}
+    </div>
+  </div>
+</section>
 
           {/* Featured Projects */}
           <section className="py-20 px-6 lg:px-8 bg-white/30">
