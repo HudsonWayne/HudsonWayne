@@ -131,25 +131,29 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="relative"
               >
-                <div className="relative">
-                  <div className="w-full h-96 bg-gradient-to-r from-orange-400 to-yellow-500 rounded-3xl overflow-hidden">
-                    <img
-                      src="/public/download (11).jpg"
-                      alt="Creative workspace"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
 
-                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-white rounded-full shadow-xl flex items-center justify-center">
-                    <motion.div
-                      className="w-16 h-16 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center"
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-                    >
-                      <Sparkles className="w-8 h-8 text-white" />
-                    </motion.div>
-                  </div>
-                </div>
+
+                <div className="relative">
+  <div className="w-full h-96 bg-gradient-to-r from-orange-400 to-yellow-500 rounded-3xl overflow-hidden">
+    <img
+      src="/download (11).jpg"
+      alt="Creative workspace"
+      className="w-full h-full object-contain"
+    />
+  </div>
+
+  <div className="absolute -top-4 -right-4 w-24 h-24 bg-white rounded-full shadow-xl flex items-center justify-center">
+    <motion.div
+      className="w-16 h-16 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center"
+      animate={{ rotate: 360 }}
+      transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+    >
+      <Sparkles className="w-8 h-8 text-white" />
+    </motion.div>
+  </div>
+</div>
+
+
               </motion.div>
             </div>
           </section>
