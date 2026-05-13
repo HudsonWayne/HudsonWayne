@@ -89,7 +89,7 @@ const Home = () => {
               >
                 <div className="flex items-center mb-6">
                   <img
-                    src="/aliciapic1.jpg"
+                    src="/public/Boy with computer.jpg"
                     alt="Profile"
                     className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
                   />
@@ -134,7 +134,7 @@ const Home = () => {
                 <div className="relative">
                   <div className="w-full h-96 bg-gradient-to-r from-orange-400 to-yellow-500 rounded-3xl overflow-hidden">
                     <img
-                      src="/alicia2.jpg"
+                      src="/public/download (11).jpg"
                       alt="Creative workspace"
                       className="w-full h-full object-cover object-top"
                     />
