@@ -101,7 +101,7 @@ const Home = () => {
                 </h1>
 
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  I build full-stack apps, drink too much coffee, and pretend everything worked on the first try ☕💻🔥😊👌
+                  Built for turning “this should work” into “fixed it” — powered by caffeine, console logs, and unreasonable optimism ☕💻🔥😅
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
