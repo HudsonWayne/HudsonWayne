@@ -141,7 +141,7 @@ const About = () => {
             </h2>
 
             <p className="text-gray-600 leading-relaxed">
-              I started coding to solve real problems and quickly fell in love with building full-stack systems, SaaS products, and AI tools.
+              I thought coding was just typing… now I’m building entire systems, fixing bugs I created myself, and calling it progress 🚀😂💻
             </p>
           </motion.div>
         </div>
