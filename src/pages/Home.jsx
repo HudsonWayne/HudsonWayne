@@ -97,7 +97,8 @@ const Home = () => {
       category: 'upcoming',
       description:
         'AI-powered SaaS platform focused on automation, analytics, and productivity tools.',
-      image: '/p1.jpg',
+      image:
+        'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg',
       tech: ['Next.js', 'OpenAI', 'Prisma'],
       link: '#',
     },
@@ -106,7 +107,8 @@ const Home = () => {
       category: 'following',
       description:
         'Scalable recruitment platform with recruiter dashboards and AI candidate matching.',
-      image: '/p2.jpg',
+      image:
+        'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg',
       tech: ['Next.js', 'Supabase', 'Tailwind'],
       link: '#',
     },
@@ -115,18 +117,27 @@ const Home = () => {
       category: 'latest',
       description:
         'Premium animated developer portfolio with cinematic UI and interactive experiences.',
-      image: '/p3.jpg',
+      image:
+        'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg',
       tech: ['React', 'Framer Motion', 'Tailwind'],
       link: '#',
     },
   ];
 
-  const filters = ['all', 'popular', 'latest', 'following', 'upcoming'];
+  const filters = [
+    'all',
+    'popular',
+    'latest',
+    'following',
+    'upcoming',
+  ];
 
   const filteredProjects =
     activeFilter === 'all'
       ? featuredProjects
-      : featuredProjects.filter((p) => p.category === activeFilter);
+      : featuredProjects.filter(
+          (project) => project.category === activeFilter
+        );
 
   return (
     <div className="relative overflow-hidden">
@@ -135,12 +146,14 @@ const Home = () => {
 
       <main className="relative z-20 pt-20">
         <div className="pt-20">
-
           {/* HERO */}
           <section className="min-h-screen flex items-center justify-center px-6 lg:px-8">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-              <div>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+              >
                 <div className="flex items-center mb-6">
                   <img
                     src="/Boy with computer.jpg"
@@ -149,12 +162,13 @@ const Home = () => {
                   />
                 </div>
 
-                <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+                <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
                   Designing{' '}
                   <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
                     Dreams
                   </span>
-                  ,<br />
+                  ,
+                  <br />
                   Building{' '}
                   <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
                     Futures
@@ -162,136 +176,325 @@ const Home = () => {
                   .
                 </h1>
 
-                <p className="text-xl text-gray-600 mb-8">
-                  Built for turning ideas into production-ready systems ☕💻🔥
+                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                  Built for turning “this should work” into “fixed it” —
+                  powered by caffeine, console logs, and unreasonable optimism
+                  ☕💻🔥😅
                 </p>
 
-                <div className="flex gap-4">
-                  <motion.button className="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full">
-                    <Mail className="inline w-5 h-5 mr-2" />
-                    Contact
-                  </motion.button>
-
-                  <motion.button className="px-8 py-4 border rounded-full">
-                    <Download className="inline w-5 h-5 mr-2" />
-                    Resume
-                  </motion.button>
-                </div>
-              </div>
-
-              {/* IMAGE FIX */}
-              <div className="relative">
-                <div className="w-full h-96 rounded-3xl overflow-hidden bg-gradient-to-r from-orange-400 to-yellow-500">
-                  <img
-                    src="/download (11).jpg"
-                    alt="workspace"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-xl">
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-                    className="w-16 h-16 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center"
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <motion.button
+                    className="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full font-semibold hover:from-pink-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-pink-500/25"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <Sparkles className="text-white w-8 h-8" />
-                  </motion.div>
-                </div>
-              </div>
+                    <Mail className="w-5 h-5" />
+                    <span>Contact Me</span>
+                  </motion.button>
 
+                  <motion.button
+                    className="px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-full font-semibold hover:border-pink-400 hover:text-pink-600 transition-all duration-300 flex items-center justify-center space-x-2 hover:bg-pink-50"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Download className="w-5 h-5" />
+                    <span>Download Resume</span>
+                  </motion.button>
+                </div>
+              </motion.div>
+
+              {/* IMAGE */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="relative"
+              >
+                <div className="relative">
+                  <div className="w-full h-96 bg-gradient-to-r from-orange-400 to-yellow-500 rounded-3xl overflow-hidden">
+                    <img
+                      src="/download (11).jpg"
+                      alt="Creative workspace"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+
+                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-white rounded-full shadow-xl flex items-center justify-center">
+                    <motion.div
+                      className="w-16 h-16 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center"
+                      animate={{ rotate: 360 }}
+                      transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: 'linear',
+                      }}
+                    >
+                      <Sparkles className="w-8 h-8 text-white" />
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </section>
 
           {/* SKILLS */}
-          <section className="py-24 px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {skills.map((skill, i) => {
-                const Icon = skill.icon;
+          <section className="relative py-24 px-6 lg:px-8 overflow-hidden">
+            <div className="absolute top-0 left-0 w-72 h-72 bg-pink-200/30 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-200/30 rounded-full blur-3xl" />
 
-                return (
-                  <motion.div
-                    key={skill.title}
-                    whileHover={{ y: -10 }}
-                    className="p-8 rounded-3xl bg-white shadow-xl"
-                  >
-                    <div className={`p-4 rounded-2xl bg-gradient-to-r ${skill.color} inline-block mb-4`}>
-                      <Icon className="text-white w-6 h-6" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">{skill.title}</h3>
-                    <p className="text-gray-600">{skill.description}</p>
-                  </motion.div>
-                );
-              })}
+            <div className="max-w-7xl mx-auto relative z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-center mb-20"
+              >
+                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-orange-400 text-white shadow-lg mb-6">
+                  <span className="text-2xl">🚀</span>
+                  <span className="font-semibold tracking-wide">
+                    Creative Developer Skills
+                  </span>
+                </div>
+
+                <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+                  My{' '}
+                  <span className="bg-gradient-to-r from-pink-500 to-orange-400 bg-clip-text text-transparent">
+                    Expertise
+                  </span>
+                </h2>
+              </motion.div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                {skills.map((skill, index) => {
+                  const IconComponent = skill.icon;
+
+                  return (
+                    <motion.div
+                      key={skill.title}
+                      initial={{ opacity: 0, y: 60 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.7,
+                        delay: index * 0.12,
+                      }}
+                      viewport={{ once: true }}
+                      whileHover={{ y: -12 }}
+                      className="group relative"
+                    >
+                      <div
+                        className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${skill.color} opacity-0 blur-2xl transition-all duration-500 group-hover:opacity-25`}
+                      />
+
+                      <div className="relative h-full bg-white/80 backdrop-blur-xl border border-white/40 rounded-3xl p-8 shadow-xl overflow-hidden">
+                        <motion.div
+                          whileHover={{
+                            rotate: [0, -10, 10, -5, 0],
+                            scale: 1.12,
+                          }}
+                          transition={{ duration: 0.6 }}
+                          className={`inline-flex items-center justify-center p-5 rounded-2xl bg-gradient-to-r ${skill.color} shadow-lg mb-6`}
+                        >
+                          <IconComponent className="w-8 h-8 text-white" />
+                        </motion.div>
+
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                          {skill.title}
+                        </h3>
+
+                        <p className="text-gray-600 leading-relaxed">
+                          {skill.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
           </section>
 
-          {/* PROJECTS */}
-          <section className="py-24 px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
+          {/* NEW PROJECTS SECTION */}
+          <section className="relative py-24 px-6 lg:px-8 overflow-hidden">
+            <div className="absolute top-0 left-0 w-80 h-80 bg-pink-200/30 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl" />
 
-              <div className="flex flex-wrap justify-center gap-4 mb-10">
-                {filters.map((f) => (
-                  <button
-                    key={f}
-                    onClick={() => setActiveFilter(f)}
-                    className={`px-5 py-2 rounded-full ${
-                      activeFilter === f
-                        ? 'bg-pink-500 text-white'
-                        : 'bg-gray-100'
+            <div className="max-w-7xl mx-auto relative z-10">
+              {/* HEADING */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-center mb-20"
+              >
+                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg mb-6">
+                  <span className="text-2xl">🔥</span>
+                  <span className="font-semibold tracking-wide">
+                    Selected Work & Creations
+                  </span>
+                </div>
+
+                <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+                  Featured{' '}
+                  <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
+                    Projects
+                  </span>
+                </h2>
+
+                <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                  Modern products, AI systems, scalable applications, and
+                  beautiful digital experiences.
+                </p>
+              </motion.div>
+
+              {/* FILTERS */}
+              <div className="flex flex-wrap justify-center gap-4 mb-16">
+                {filters.map((filter) => (
+                  <motion.button
+                    key={filter}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setActiveFilter(filter)}
+                    className={`px-6 py-3 rounded-2xl font-semibold capitalize transition-all duration-300 ${
+                      activeFilter === filter
+                        ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg'
+                        : 'bg-white/80 backdrop-blur-xl border border-gray-200 text-gray-700 hover:border-pink-400 hover:text-pink-500'
                     }`}
                   >
-                    {f}
-                  </button>
+                    {filter}
+                  </motion.button>
                 ))}
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                {filteredProjects.map((project) => (
-                  <motion.div
-                    key={project.title}
-                    whileHover={{ y: -10 }}
-                    className="rounded-3xl overflow-hidden bg-white shadow-xl"
-                  >
-                    {/* FIXED IMAGE */}
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-64 object-cover"
-                    />
+              {/* PROJECT GRID */}
+              <motion.div
+                layout
+                className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10"
+              >
+                <AnimatePresence mode="popLayout">
+                  {filteredProjects.map((project, index) => {
+                    const emojis = [
+                      '🚀',
+                      '💻',
+                      '⚡',
+                      '🎨',
+                      '🔥',
+                      '🧠',
+                    ];
 
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2">
-                        {project.title}
-                      </h3>
-                      <p className="text-gray-600 mb-4">
-                        {project.description}
-                      </p>
-
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tech.map((t) => (
-                          <span
-                            key={t}
-                            className="text-sm px-3 py-1 bg-pink-100 text-pink-600 rounded-full"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-
-                      <a
-                        href={project.link}
-                        className="block text-center bg-gradient-to-r from-pink-500 to-purple-500 text-white py-3 rounded-xl"
+                    return (
+                      <motion.div
+                        layout
+                        key={project.title}
+                        initial={{ opacity: 0, y: 60 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{
+                          duration: 0.5,
+                          delay: index * 0.08,
+                        }}
+                        whileHover={{ y: -10 }}
+                        className="group relative"
                       >
-                        View Project ✨
-                      </a>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 blur-2xl transition-all duration-500 group-hover:opacity-20" />
+
+                        <div className="relative overflow-hidden rounded-3xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-xl transition-all duration-500 group-hover:shadow-2xl">
+                          {/* IMAGE */}
+                          <div className="relative overflow-hidden">
+                            <motion.img
+                              src={project.image}
+                              alt={project.title}
+                              whileHover={{ scale: 1.08 }}
+                              transition={{ duration: 0.5 }}
+                              className="w-full h-64 object-cover"
+                            />
+
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+                            {/* CATEGORY */}
+                            <div className="absolute top-5 left-5">
+                              <span className="px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-white text-sm font-semibold capitalize border border-white/20">
+                                {project.category}
+                              </span>
+                            </div>
+
+                            {/* FLOATING ICON */}
+                            <motion.div
+                              animate={{
+                                y: [0, -6, 0],
+                              }}
+                              transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                              }}
+                              className="absolute top-5 right-5 w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-3xl border border-white/20 shadow-lg"
+                            >
+                              {emojis[index % emojis.length]}
+                            </motion.div>
+
+                            {/* TITLE */}
+                            <div className="absolute bottom-5 left-5 right-5">
+                              <h3 className="text-2xl font-bold text-white">
+                                {project.title}
+                              </h3>
+                            </div>
+                          </div>
+
+                          {/* CONTENT */}
+                          <div className="p-7">
+                            <p className="text-gray-600 leading-relaxed mb-6 text-[15px]">
+                              {project.description}
+                            </p>
+
+                            {/* TECH */}
+                            <div className="flex flex-wrap gap-3 mb-8">
+                              {project.tech.map((tech) => (
+                                <motion.span
+                                  key={tech}
+                                  whileHover={{ scale: 1.08 }}
+                                  className="px-4 py-2 rounded-full bg-gradient-to-r from-pink-100 to-purple-100 text-pink-700 text-sm font-semibold shadow-sm border border-pink-200/50"
+                                >
+                                  {tech}
+                                </motion.span>
+                              ))}
+                            </div>
+
+                            {/* BUTTON */}
+                            <motion.a
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              whileHover={{
+                                scale: 1.03,
+                                y: -2,
+                              }}
+                              whileTap={{ scale: 0.98 }}
+                              className="relative flex items-center justify-center gap-3 w-full px-6 py-4 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold overflow-hidden shadow-lg hover:shadow-pink-500/30 transition-all duration-300"
+                            >
+                              <span className="relative z-10">
+                                View Project
+                              </span>
+
+                              <span className="relative z-10 text-xl">
+                                ✨
+                              </span>
+
+                              <motion.div
+                                initial={{ x: '-120%' }}
+                                whileHover={{ x: '120%' }}
+                                transition={{ duration: 0.8 }}
+                                className="absolute inset-0 bg-white/20 skew-x-12"
+                              />
+                            </motion.a>
+                          </div>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </AnimatePresence>
+              </motion.div>
             </div>
           </section>
-
         </div>
       </main>
     </div>
