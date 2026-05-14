@@ -100,7 +100,7 @@ const About = () => {
             </h1>
 
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              I’m Wayne — a full-stack developer building modern, scalable web applications with clean UI and strong backend systems.
+              I’m Wayne — a full-stack developer building fast, scalable web apps with clean UI, powerful backends, and real-world impact 🚀💻⚡
             </p>
           </motion.div>
         </div>
