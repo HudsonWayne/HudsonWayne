@@ -98,9 +98,9 @@ const Home = () => {
       description:
         'AI-powered farming tools using drawnes and machines',
       image:
-        'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg',
+        '/Pic 10.jpg',
       tech: ['Next.js', 'OpenAI', 'Prisma'],
-      link: '#',
+      link: 'https://smart-farms-2v7n-1dx8ewysv-hudsonwaynes-projects.vercel.app/',
     },
     {
       title: 'Job Platform',
