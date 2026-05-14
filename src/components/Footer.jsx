@@ -13,11 +13,11 @@ const Footer = () => {
                 <Sparkles className="w-5 h-5 text-white" />
               </div>
               <span className="text-lg font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
-                Alicia Manyeka
+                HudsonWayne
               </span>
             </div>
             <span className="text-gray-600">|</span>
-            <p className="text-gray-600">© 2024 Alicia Dev. All rights reserved.</p>
+            <p className="text-gray-600">© 2026 HudsonWayne Dev. All rights reserved.</p>
           </div>
 
           {/* Social Links */}
