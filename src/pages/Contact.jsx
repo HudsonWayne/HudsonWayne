@@ -25,7 +25,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email Me',
-      value: '@amanyeka8gmail.com',
+      value: 'hudsonnbenhuraa@gmail.com',
       description: 'Send me an email and I\'ll respond within 24 hours'
     },
     {
