@@ -37,11 +37,11 @@ const About = () => {
 
   const education = [
     {
-      degree: 'Pending Certification',
+      degree: 'Certification in Software Engineering',
       institution: 'Ucommon.org',
-      period: 'Jan 2025 - Dec 2025',
+      period: 'Aug 2022 - Dec 2023',
       description:
-        'Built real-world projects and collaborated on team-based sprints.',
+        'Engineered full-stack applications, solved real-world problems, and collaborated in fast-paced agile teams to deliver production-ready software.Built real-world projects and collaborated on team-based sprints.',
     },
   ];
 
