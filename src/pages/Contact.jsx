@@ -1,7 +1,7 @@
 // Contact.jsx
 
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Mail,
   Phone,
@@ -22,6 +22,28 @@ const Contact = () => {
     phone: '',
     message: '',
   });
+
+  // ✅ CHANGING HERO TEXT
+  const rotatingTexts = [
+    'Something Amazing',
+    'Modern SaaS',
+    'AI Experiences',
+    'Creative Products',
+    'Scalable Systems',
+    'Future Ideas',
+  ];
+
+  const [currentText, setCurrentText] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentText((prev) =>
+        prev === rotatingTexts.length - 1 ? 0 : prev + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -101,9 +123,43 @@ const Contact = () => {
 
               <br />
 
-              <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400 bg-clip-text text-transparent">
-                Something Amazing
-              </span>
+              {/* ✅ ROTATING TEXT */}
+              <div className="relative h-[100px] lg:h-[120px] flex items-center justify-center overflow-hidden">
+
+                <AnimatePresence mode="wait">
+
+                  <motion.span
+                    key={rotatingTexts[currentText]}
+                    initial={{
+                      opacity: 0,
+                      rotateX: -90,
+                      scale: 0.7,
+                      y: 60,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      rotateX: 0,
+                      scale: 1,
+                      y: 0,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      rotate: 720,
+                      scale: 0.5,
+                      y: -60,
+                    }}
+                    transition={{
+                      duration: 1.2,
+                      ease: 'easeInOut',
+                    }}
+                    className="absolute bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400 bg-clip-text text-transparent"
+                  >
+                    {rotatingTexts[currentText]}
+                  </motion.span>
+
+                </AnimatePresence>
+
+              </div>
             </h1>
 
             {/* SUBTITLE */}
