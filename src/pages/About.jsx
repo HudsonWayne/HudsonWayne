@@ -57,6 +57,13 @@ const About = () => {
       description:
         'Mastered advanced prompt engineering techniques for building intelligent AI workflows, automation systems, and high-performance applications powered by modern large language models.',
     },
+    {
+      degree: 'Certification in Complete Python Pro 100 Days of Code Bootcamp',
+      institution: 'www.udemy.com',
+      period: 'Jan 2026 - Jan 2026',
+      description:
+        'Developed real-world Python applications, automated workflows, built backend systems, and strengthened problem-solving skills through hands-on projects and intensive coding challenges.',
+    },
     
   ];
 
