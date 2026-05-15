@@ -1,288 +1,453 @@
 // Projects.jsx
+
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Heart, X } from 'lucide-react';
+import {
+  ExternalLink,
+  Github,
+  Heart,
+  X,
+  Sparkles,
+} from 'lucide-react';
 
 const Projects = () => {
+  const [active, setActive] = useState(null);
+  const [activeFilter, setActiveFilter] = useState('all');
+
   const projects = [
     {
-      title: 'Fizzi EJS',
+      title: 'Anon',
+      category: 'latest',
       description:
-        'Developed a modern web application using EJS templates, focusing on modular design and responsive layout. Implemented dynamic content rendering and optimized UI interactions for a smooth user experience.',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
-      tech: ['EJS', 'Node.js', 'Express', 'Tailwind CSS'],
-      category: 'Latest',
-      featured: true,
-      link: 'https://fizzi-ejs.vercel.app/',
-      repo: null,
-      future: 'Add user authentication and real-time notifications.'
-    },
-    {
-      title: 'Smart Farms',
-      description:
-        'A client-side project focused on smart farming management. Built interactive dashboards, implemented data visualization for farm metrics, and optimized performance for large datasets.',
-      image: 'https://images.pexels.com/photos/4792477/pexels-photo-4792477.jpeg',
-      tech: ['React', 'Tailwind CSS', 'Firebase'],
-      category: 'Client Projects',
-      featured: true,
-      link: 'https://smart-farms-1yjd.vercel.app/',
-      repo: null,
-      future: 'Integrate IoT sensors for real-time farm data monitoring.'
-    },
-    {
-      title: 'Food Delivery Nu',
-      description:
-        'E-commerce web application for food delivery. Implemented a fully functional shopping cart, product categories, and dynamic checkout process with real-time order updates.',
-      image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg',
-      tech: ['React', 'Tailwind CSS', 'Firebase'],
-      category: 'E-Commerce',
-      featured: true,
-      link: 'https://food-del-nu.vercel.app/',
-      repo: null,
-      future: 'Add payment gateway integration and order tracking.'
-    },
-    {
-      title: 'Amon Vajv',
-      description:
-        'Another e-commerce project focusing on modern UI and responsive design. Integrated product listings, filtering, and cart functionality for a seamless shopping experience.',
-      image: 'https://images.pexels.com/photos/776656/pexels-photo-776656.jpeg',
-      tech: ['React', 'Tailwind CSS', 'Firebase'],
-      category: 'E-Commerce',
-      featured: true,
+        'Modern female clothing platform with elegant UI, responsive shopping experience, and smooth animations.',
+      image: '/newsletter.png',
+      tech: ['Next.js', 'Tailwind', 'TypeScript'],
       link: 'https://amon-vajv.vercel.app/',
       repo: null,
-      future: 'Implement user reviews and recommendation engine.'
-    }
+      featured: true,
+      future:
+        'Add AI outfit recommendations and personalized shopping experiences.',
+    },
+    {
+      title: 'Food Delivery',
+      category: 'popular',
+      description:
+        'Fast and scalable food delivery application with modern mobile-first design and real-time ordering.',
+      image: '/header_img.png',
+      tech: ['React', 'Node.js', 'MongoDB'],
+      link:
+        'https://food-54vsvuvuq-hudsonwaynes-projects.vercel.app/',
+      repo: null,
+      featured: true,
+      future:
+        'Add payment gateway integration and live order tracking.',
+    },
+    {
+      title: 'Fizzi',
+      category: 'popular',
+      description:
+        'Interactive animated product experience with immersive transitions and smooth effects.',
+      image: '/lemon-lime.png',
+      tech: ['EJS', 'JavaScript', 'CSS'],
+      link: 'https://fizzi-ejs.vercel.app/',
+      repo: null,
+      featured: true,
+      future:
+        'Implement CMS dashboard and advanced animation controls.',
+    },
+    {
+      title: 'Smart-Farms',
+      category: 'popular',
+      description:
+        'AI-powered farming tools using drones and smart automation systems.',
+      image: '/Pic 10.jpg',
+      tech: ['Next.js', 'OpenAI', 'Prisma'],
+      link:
+        'https://smart-farms-2v7n-1dx8ewysv-hudsonwaynes-projects.vercel.app/',
+      repo: null,
+      featured: true,
+      future:
+        'Integrate IoT sensors and predictive analytics for farming.',
+    },
+    {
+      title: 'Job Platform',
+      category: 'following',
+      description:
+        'Scalable recruitment platform with recruiter dashboards and AI candidate matching.',
+      image:
+        'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg',
+      tech: ['Next.js', 'Supabase', 'Tailwind'],
+      link: '#',
+      repo: null,
+      featured: true,
+      future:
+        'Add AI resume scoring and real-time interview scheduling.',
+    },
+    {
+      title: 'Developer Portfolio',
+      category: 'latest',
+      description:
+        'Premium animated developer portfolio with cinematic UI and interactive experiences.',
+      image:
+        'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg',
+      tech: ['React', 'Framer Motion', 'Tailwind'],
+      link: '#',
+      repo: null,
+      featured: true,
+      future:
+        'Add CMS integration and customizable portfolio themes.',
+    },
   ];
 
-  // precompute features (avoids recomputing split on each render)
+  const filters = ['all', 'popular', 'latest', 'following'];
+
+  const filteredProjects =
+    activeFilter === 'all'
+      ? projects
+      : projects.filter(
+          (project) => project.category === activeFilter
+        );
+
   const projectsWithFeatures = useMemo(
     () =>
-      projects.map((p) => ({
+      filteredProjects.map((p) => ({
         ...p,
         features: p.description
           .split('.')
           .map((s) => s.trim())
-          .filter(Boolean)
+          .filter(Boolean),
       })),
-    [projects]
+    [filteredProjects]
   );
 
-  // modal state
-  const [active, setActive] = useState(null); // index of active project or null
-
   const openLink = (url) => {
-    if (!url) return;
+    if (!url || url === '#') return;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <div className="pt-20">
-      {/* Header */}
-      <section className="py-12 px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4 flex items-center justify-center">
-            My Projects <Heart className="w-8 h-8 lg:w-10 lg:h-10 text-pink-500 ml-3" />
-          </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">Selected projects showcasing product thinking, front-end craftsmanship and full-stack integrations.</p>
-        </motion.div>
-      </section>
+    <div className="relative overflow-hidden pt-20">
 
-      {/* Projects Grid */}
-      <section className="pb-20 px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projectsWithFeatures.map((project, index) => (
-              <motion.div
-                key={`${project.title}-${index}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.06 }}
-                viewport={{ once: true }}
-                className="group"
+      {/* BACKGROUND BLURS */}
+      <div className="absolute top-0 left-0 w-80 h-80 bg-pink-200/30 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl" />
+
+      {/* HEADER */}
+      <section className="relative py-16 px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg mb-6">
+              <Heart className="w-5 h-5" />
+              <span className="font-semibold tracking-wide">
+                Selected Work & Creations
+              </span>
+            </div>
+
+            <h1 className="text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+              Featured{' '}
+              <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
+                Projects
+              </span>
+            </h1>
+
+            <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              Modern SaaS products, AI tools, scalable applications,
+              and immersive digital experiences.
+            </p>
+          </motion.div>
+
+          {/* FILTERS */}
+          <div className="flex flex-wrap justify-center gap-4 mt-14">
+            {filters.map((filter) => (
+              <motion.button
+                key={filter}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setActiveFilter(filter)}
+                className={`px-6 py-3 rounded-2xl font-semibold capitalize transition-all duration-300 ${
+                  activeFilter === filter
+                    ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg'
+                    : 'bg-white/80 backdrop-blur-xl border border-gray-200 text-gray-700 hover:border-pink-400 hover:text-pink-500'
+                }`}
               >
-                <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                  {/* Project Image */}
-                  <div className="relative overflow-hidden h-48">
-                    <button
-                      onClick={() => setActive(index)}
-                      aria-label={`Open details for ${project.title}`}
-                      className="w-full h-full block text-left"
-                    >
-                      <img
-                        src={project.image}
-                        alt={`${project.title} preview`}
-                        loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    </button>
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-                    <div className="absolute top-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <button
-                        onClick={() => openLink(project.link)}
-                        aria-label={`Open live site for ${project.title}`}
-                        className="p-2 bg-white/90 rounded-full hover:bg-white transition-colors duration-200"
-                      >
-                        <ExternalLink className={`w-4 h-4 ${project.link ? 'text-gray-700' : 'text-gray-400'}`} />
-                      </button>
-                      <button
-                        onClick={() => openLink(project.repo)}
-                        aria-label={`Open repository for ${project.title}`}
-                        className="p-2 bg-white/90 rounded-full hover:bg-white transition-colors duration-200"
-                      >
-                        <Github className={`w-4 h-4 ${project.repo ? 'text-gray-700' : 'text-gray-400'}`} />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Project Content */}
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-3">
-                      <h3 className="text-lg lg:text-xl font-semibold text-gray-900">{project.title}</h3>
-                      <span className={`text-xs px-2 py-1 rounded-full ${project.featured ? 'bg-pink-50 text-pink-600' : 'bg-gray-100 text-gray-700'}`}>
-                        {project.featured ? 'Featured' : project.category}
-                      </span>
-                    </div>
-
-                    {/* Technology Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tech.map((tech) => (
-                        <span key={tech} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Features List (compact preview) */}
-                    <div className="space-y-2 mb-6 text-sm text-gray-600 max-h-24 overflow-hidden">
-                      {project.features.slice(0, 4).map((feature, fi) => (
-                        <div key={fi} className="flex items-start">
-                          <div className="w-2 h-2 bg-pink-400 rounded-full mt-2 mr-3 flex-shrink-0" />
-                          <span>{feature.trim()}{feature.endsWith('.') ? '' : '.'}</span>
-                        </div>
-                      ))}
-                      {project.features.length > 4 && (
-                        <div className="text-xs text-gray-500 mt-2">+{project.features.length - 4} more</div>
-                      )}
-                    </div>
-
-                    <button
-                      onClick={() => setActive(index)}
-                      className="w-full px-4 py-3 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-xl font-medium hover:from-pink-500 hover:to-pink-600 transition-all duration-300 transform hover:scale-105"
-                      aria-label={`View details for ${project.title}`}
-                    >
-                      View project
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
+                {filter}
+              </motion.button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Project Modal */}
-      <AnimatePresence>
-        {active !== null && (
+      {/* PROJECT GRID */}
+      <section className="relative pb-24 px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-6"
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10"
+          >
+            <AnimatePresence mode="popLayout">
+              {projectsWithFeatures.map((project, index) => {
+                const emojis = [
+                  '🚀',
+                  '💻',
+                  '⚡',
+                  '🎨',
+                  '🔥',
+                  '🧠',
+                ];
+
+                return (
+                  <motion.div
+                    layout
+                    key={project.title}
+                    initial={{ opacity: 0, y: 60 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: index * 0.08,
+                    }}
+                    whileHover={{ y: -10 }}
+                    className="group relative"
+                  >
+                    {/* GLOW */}
+                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 blur-2xl transition-all duration-500 group-hover:opacity-20" />
+
+                    {/* CARD */}
+                    <div className="relative overflow-hidden rounded-3xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-xl transition-all duration-500 group-hover:shadow-2xl">
+
+                      {/* IMAGE */}
+                      <div className="relative overflow-hidden">
+                        <motion.img
+                          src={project.image}
+                          alt={project.title}
+                          whileHover={{ scale: 1.08 }}
+                          transition={{ duration: 0.5 }}
+                          className="w-full h-64 object-cover"
+                        />
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+                        {/* CATEGORY */}
+                        <div className="absolute top-5 left-5">
+                          <span className="px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-white text-sm font-semibold capitalize border border-white/20">
+                            {project.category}
+                          </span>
+                        </div>
+
+                        {/* FLOATING ICON */}
+                        <motion.div
+                          animate={{
+                            y: [0, -6, 0],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                          }}
+                          className="absolute top-5 right-5 w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-3xl border border-white/20 shadow-lg"
+                        >
+                          {emojis[index % emojis.length]}
+                        </motion.div>
+
+                        {/* TITLE */}
+                        <div className="absolute bottom-5 left-5 right-5">
+                          <h3 className="text-2xl font-bold text-white">
+                            {project.title}
+                          </h3>
+                        </div>
+                      </div>
+
+                      {/* CONTENT */}
+                      <div className="p-7">
+
+                        <p className="text-gray-600 leading-relaxed mb-6 text-[15px]">
+                          {project.description}
+                        </p>
+
+                        {/* TECH STACK */}
+                        <div className="flex flex-wrap gap-3 mb-8">
+                          {project.tech.map((tech) => (
+                            <motion.span
+                              key={tech}
+                              whileHover={{ scale: 1.08 }}
+                              className="px-4 py-2 rounded-full bg-gradient-to-r from-pink-100 to-purple-100 text-pink-700 text-sm font-semibold shadow-sm border border-pink-200/50"
+                            >
+                              {tech}
+                            </motion.span>
+                          ))}
+                        </div>
+
+                        {/* BUTTONS */}
+                        <div className="flex gap-3">
+
+                          <motion.button
+                            onClick={() => setActive(project)}
+                            whileHover={{
+                              scale: 1.03,
+                              y: -2,
+                            }}
+                            whileTap={{ scale: 0.98 }}
+                            className="relative flex-1 flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold overflow-hidden shadow-lg hover:shadow-pink-500/30 transition-all duration-300"
+                          >
+                            <span className="relative z-10">
+                              View Details
+                            </span>
+
+                            <Sparkles className="w-5 h-5 relative z-10" />
+
+                            <motion.div
+                              initial={{ x: '-120%' }}
+                              whileHover={{ x: '120%' }}
+                              transition={{ duration: 0.8 }}
+                              className="absolute inset-0 bg-white/20 skew-x-12"
+                            />
+                          </motion.button>
+
+                          {project.link && project.link !== '#' && (
+                            <motion.button
+                              onClick={() => openLink(project.link)}
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className="w-14 h-14 rounded-2xl bg-white border border-gray-200 flex items-center justify-center shadow-md hover:text-pink-500"
+                            >
+                              <ExternalLink className="w-5 h-5" />
+                            </motion.button>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* MODAL */}
+      <AnimatePresence>
+        {active && (
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            aria-modal="true"
-            role="dialog"
           >
             <motion.div
-              initial={{ scale: 0.95, y: 20 }}
+              initial={{ scale: 0.9, y: 40 }}
               animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.95, y: 20 }}
-              transition={{ duration: 0.18 }}
-              className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full overflow-hidden"
+              exit={{ scale: 0.9, y: 40 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white rounded-3xl overflow-hidden max-w-4xl w-full shadow-2xl"
             >
+              {/* IMAGE */}
               <div className="relative">
                 <img
-                  src={projectsWithFeatures[active].image}
-                  alt={`${projectsWithFeatures[active].title} large preview`}
-                  className="w-full h-56 object-cover"
-                  loading="lazy"
+                  src={active.image}
+                  alt={active.title}
+                  className="w-full h-72 object-cover"
                 />
+
                 <button
                   onClick={() => setActive(null)}
-                  aria-label="Close project modal"
-                  className="absolute top-4 right-4 bg-white/80 rounded-full p-2 hover:bg-white transition"
+                  className="absolute top-5 right-5 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-4">
+              {/* CONTENT */}
+              <div className="p-8">
+
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6">
+
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-900">{projectsWithFeatures[active].title}</h2>
-                    <p className="text-sm text-gray-500 mt-1">{projectsWithFeatures[active].category}</p>
+                    <h2 className="text-4xl font-bold text-gray-900">
+                      {active.title}
+                    </h2>
+
+                    <p className="text-pink-500 font-semibold mt-2 capitalize">
+                      {active.category}
+                    </p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    {projectsWithFeatures[active].link && (
+
+                  <div className="flex gap-3">
+                    {active.link && active.link !== '#' && (
                       <button
-                        onClick={() => openLink(projectsWithFeatures[active].link)}
-                        className="px-3 py-2 bg-gray-100 rounded-md text-sm"
-                        aria-label="Open live project"
+                        onClick={() => openLink(active.link)}
+                        className="px-5 py-3 bg-gray-100 rounded-xl font-medium hover:bg-gray-200 transition"
                       >
-                        Live <ExternalLink className="inline-block w-4 h-4 ml-2 -mt-0.5" />
+                        Live Demo
                       </button>
                     )}
-                    {projectsWithFeatures[active].repo && (
+
+                    {active.repo && (
                       <button
-                        onClick={() => openLink(projectsWithFeatures[active].repo)}
-                        className="px-3 py-2 bg-gray-100 rounded-md text-sm"
-                        aria-label="Open repository"
+                        onClick={() => openLink(active.repo)}
+                        className="px-5 py-3 bg-gray-100 rounded-xl font-medium hover:bg-gray-200 transition"
                       >
-                        Repo <Github className="inline-block w-4 h-4 ml-2 -mt-0.5" />
+                        <Github className="inline-block w-4 h-4 mr-2" />
+                        Github
                       </button>
                     )}
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="md:col-span-2">
-                    <p className="text-gray-700 mb-4">{projectsWithFeatures[active].description}</p>
+                <p className="text-gray-600 leading-relaxed mb-8">
+                  {active.description}
+                </p>
 
-                    <h4 className="text-sm font-semibold text-gray-900 mb-2">Key features</h4>
-                    <ul className="list-inside list-disc text-gray-600 space-y-2">
-                      {projectsWithFeatures[active].features.map((f, i) => (
-                        <li key={i}>{f}</li>
-                      ))}
-                    </ul>
+                {/* FEATURES */}
+                <div className="mb-8">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    Key Features
+                  </h3>
 
-                    <h4 className="text-sm font-semibold text-gray-900 mt-4 mb-2">Future Improvements</h4>
-                    <p className="text-gray-600 text-sm">{projectsWithFeatures[active].future}</p>
-                  </div>
-
-                  <aside className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="text-sm font-semibold text-gray-900 mb-2">Tech stack</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {projectsWithFeatures[active].tech.map((t) => (
-                        <span key={t} className="text-sm bg-white px-3 py-1 rounded-full border text-gray-700">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="mt-4">
-                      <button
-                        onClick={() => setActive(null)}
-                        className="w-full px-4 py-2 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-md"
+                  <div className="space-y-3">
+                    {active.features.map((feature, i) => (
+                      <div
+                        key={i}
+                        className="flex items-start gap-3"
                       >
-                        Close
-                      </button>
-                    </div>
-                  </aside>
+                        <div className="w-2 h-2 rounded-full bg-pink-500 mt-2" />
+                        <p className="text-gray-600">{feature}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* FUTURE */}
+                <div className="mb-8">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    Future Improvements
+                  </h3>
+
+                  <p className="text-gray-600">
+                    {active.future}
+                  </p>
+                </div>
+
+                {/* TECH */}
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    Tech Stack
+                  </h3>
+
+                  <div className="flex flex-wrap gap-3">
+                    {active.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-4 py-2 rounded-full bg-gradient-to-r from-pink-100 to-purple-100 text-pink-700 font-semibold border border-pink-200/50"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
