@@ -50,6 +50,14 @@ const About = () => {
       description:
         'Built and deployed advanced AI systems using LLMs, RAG pipelines, QLoRA fine-tuning, and autonomous agents while developing scalable, production-ready applications focused on real-world problem solving.',
     },
+    {
+      degree: 'Certification in Prompt Engineering Master AI',
+      institution: 'www.udemy.com',
+      period: 'May 2026 - May 2026',
+      description:
+        'Mastered advanced prompt engineering techniques for building intelligent AI workflows, automation systems, and high-performance applications powered by modern large language models.',
+    },
+    
   ];
 
   const experience = [
