@@ -10,10 +10,15 @@ import {
   Palette,
   BarChart3,
   Sparkles,
+  Rocket,
+  Cpu,
+  Code2,
 } from 'lucide-react';
 
 import InteractiveBackground from '../components/InteractiveBackground';
 import FloatingTechIcons from '../components/FloatingTechIcons';
+
+import Wayne1 from '../images/wayne11.jpeg';
 
 const Home = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -97,10 +102,10 @@ const Home = () => {
       category: 'popular',
       description:
         'AI-powered farming tools using drawnes and machines',
-      image:
-        '/Pic 10.jpg',
+      image: '/Pic 10.jpg',
       tech: ['Next.js', 'OpenAI', 'Prisma'],
-      link: 'https://smart-farms-2v7n-1dx8ewysv-hudsonwaynes-projects.vercel.app/',
+      link:
+        'https://smart-farms-2v7n-1dx8ewysv-hudsonwaynes-projects.vercel.app/',
     },
     {
       title: 'Job Platform',
@@ -140,100 +145,143 @@ const Home = () => {
         );
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden min-h-screen">
       <InteractiveBackground />
       <FloatingTechIcons />
 
       <main className="relative z-20 pt-20">
-        <div className="pt-20">
-          {/* HERO */}
-          <section className="min-h-screen flex items-center justify-center px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="pt-10">
+
+          {/* HERO SECTION */}
+          <section className="min-h-screen flex items-center px-6 lg:px-8 py-20">
+            <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+
+              {/* LEFT SIDE */}
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: -60 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <div className="flex items-center mb-6">
-                  <img
-                    src="/Boy with computer.jpg"
-                    alt="Profile"
-                    className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
-                  />
-                </div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6 }}
+                  className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/80 backdrop-blur-xl border border-white/40 shadow-lg mb-8"
+                >
+                  <Sparkles className="w-5 h-5 text-pink-500" />
 
-                <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                  Designing{' '}
-                  <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-                    Dreams
+                  <span className="font-semibold text-gray-700">
+                    Full-Stack Engineer & AI Builder
                   </span>
-                  ,
+                </motion.div>
+
+                <h1 className="text-5xl lg:text-7xl font-black text-gray-900 leading-tight mb-8">
+                  Creating{' '}
+                  <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400 bg-clip-text text-transparent">
+                    Modern Digital
+                  </span>
                   <br />
-                  Building{' '}
-                  <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-                    Futures
-                  </span>
-                  .
+                  Experiences 🚀
                 </h1>
 
-                <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mb-10">
                   Built for turning “this should work” into “fixed it” —
                   powered by caffeine, console logs, and unreasonable optimism
                   ☕💻🔥😅
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-wrap gap-5">
+
                   <motion.button
-                    className="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full font-semibold hover:from-pink-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-pink-500/25"
-                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileHover={{ scale: 1.05, y: -4 }}
                     whileTap={{ scale: 0.95 }}
+                    className="px-7 py-4 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-xl flex items-center gap-3 font-semibold"
                   >
                     <Mail className="w-5 h-5" />
-                    <span>Contact Me</span>
+                    Contact Me
                   </motion.button>
 
                   <motion.button
-                    className="px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-full font-semibold hover:border-pink-400 hover:text-pink-600 transition-all duration-300 flex items-center justify-center space-x-2 hover:bg-pink-50"
-                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileHover={{ scale: 1.05, y: -4 }}
                     whileTap={{ scale: 0.95 }}
+                    className="px-7 py-4 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-xl text-gray-700 flex items-center gap-3 font-semibold"
                   >
-                    <Download className="w-5 h-5" />
-                    <span>Download Resume</span>
+                    <Download className="w-5 h-5 text-purple-500" />
+                    Download Resume
                   </motion.button>
+
+                </div>
+
+                {/* EXTRA BADGES */}
+                <div className="flex flex-wrap gap-4 mt-8">
+
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -4 }}
+                    className="px-6 py-4 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-xl flex items-center gap-3 font-semibold"
+                  >
+                    <Rocket className="w-5 h-5" />
+                    Production Ready
+                  </motion.div>
+
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -4 }}
+                    className="px-6 py-4 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-xl text-gray-700 flex items-center gap-3 font-semibold"
+                  >
+                    <Cpu className="w-5 h-5 text-pink-500" />
+                    AI + SaaS Systems
+                  </motion.div>
+
                 </div>
               </motion.div>
 
-              {/* IMAGE */}
+              {/* RIGHT SIDE */}
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: 60 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative"
+                transition={{ duration: 1 }}
+                className="relative flex justify-center"
               >
-                <div className="relative">
-                  <div className="w-full h-96 bg-gradient-to-r from-orange-400 to-yellow-500 rounded-3xl overflow-hidden">
-                    <img
-                      src="/download (11).jpg"
-                      alt="Creative workspace"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-300/40 to-purple-300/40 blur-3xl rounded-full"></div>
 
-                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-white rounded-full shadow-xl flex items-center justify-center">
-                    <motion.div
-                      className="w-16 h-16 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center"
-                      animate={{ rotate: 360 }}
-                      transition={{
-                        duration: 8,
-                        repeat: Infinity,
-                        ease: 'linear',
-                      }}
-                    >
-                      <Sparkles className="w-8 h-8 text-white" />
-                    </motion.div>
+                <motion.img
+                  animate={{
+                    y: [0, -12, 0],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                  }}
+                  src={Wayne1}
+                  alt="Wayne"
+                  className="relative z-10 w-[340px] lg:w-[450px] h-[340px] lg:h-[450px] object-cover rounded-[40px] shadow-2xl border-4 border-white"
+                />
+
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="absolute -bottom-8 -left-6 bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl rounded-3xl p-5 z-20"
+                >
+                  <div className="flex items-center gap-4">
+
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center">
+                      <Code2 className="text-white" />
+                    </div>
+
+                    <div>
+                      <h3 className="font-bold text-gray-900">
+                        Building Daily
+                      </h3>
+
+                      <p className="text-gray-600 text-sm">
+                        SaaS • AI • Full-Stack
+                      </p>
+                    </div>
+
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
+
             </div>
           </section>
 
@@ -252,6 +300,7 @@ const Home = () => {
               >
                 <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-orange-400 text-white shadow-lg mb-6">
                   <span className="text-2xl">🚀</span>
+
                   <span className="font-semibold tracking-wide">
                     Creative Developer Skills
                   </span>
@@ -313,13 +362,13 @@ const Home = () => {
             </div>
           </section>
 
-          {/* NEW PROJECTS SECTION */}
+          {/* PROJECTS */}
           <section className="relative py-24 px-6 lg:px-8 overflow-hidden">
             <div className="absolute top-0 left-0 w-80 h-80 bg-pink-200/30 rounded-full blur-3xl" />
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-              {/* HEADING */}
+
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -329,6 +378,7 @@ const Home = () => {
               >
                 <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg mb-6">
                   <span className="text-2xl">🔥</span>
+
                   <span className="font-semibold tracking-wide">
                     Selected Work & Creations
                   </span>
@@ -399,6 +449,7 @@ const Home = () => {
                         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 blur-2xl transition-all duration-500 group-hover:opacity-20" />
 
                         <div className="relative overflow-hidden rounded-3xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-xl transition-all duration-500 group-hover:shadow-2xl">
+
                           {/* IMAGE */}
                           <div className="relative overflow-hidden">
                             <motion.img
@@ -411,14 +462,12 @@ const Home = () => {
 
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-                            {/* CATEGORY */}
                             <div className="absolute top-5 left-5">
                               <span className="px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-white text-sm font-semibold capitalize border border-white/20">
                                 {project.category}
                               </span>
                             </div>
 
-                            {/* FLOATING ICON */}
                             <motion.div
                               animate={{
                                 y: [0, -6, 0],
@@ -432,7 +481,6 @@ const Home = () => {
                               {emojis[index % emojis.length]}
                             </motion.div>
 
-                            {/* TITLE */}
                             <div className="absolute bottom-5 left-5 right-5">
                               <h3 className="text-2xl font-bold text-white">
                                 {project.title}
@@ -446,7 +494,6 @@ const Home = () => {
                               {project.description}
                             </p>
 
-                            {/* TECH */}
                             <div className="flex flex-wrap gap-3 mb-8">
                               {project.tech.map((tech) => (
                                 <motion.span
@@ -459,7 +506,6 @@ const Home = () => {
                               ))}
                             </div>
 
-                            {/* BUTTON */}
                             <motion.a
                               href={project.link}
                               target="_blank"
@@ -495,6 +541,7 @@ const Home = () => {
               </motion.div>
             </div>
           </section>
+
         </div>
       </main>
     </div>
