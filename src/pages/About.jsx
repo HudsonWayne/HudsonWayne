@@ -46,7 +46,7 @@ const About = () => {
     {
       degree: 'Certification in AI Engineering Core Track: LLM Engineering, RAG, QLoRA, Agents',
       institution: 'www.udemy.com',
-      period: 'Aug 2022 - Dec 2023',
+      period: 'Mar 2026 - May 2026',
       description:
         'Engineered full-stack applications, solved real-world problems, and collaborated in fast-paced agile teams to deliver production-ready software.Built real-world projects and collaborated on team-based sprints.',
     },
