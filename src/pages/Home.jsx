@@ -88,54 +88,9 @@ const Home = () => {
       link:
         'https://food-54vsvuvuq-hudsonwaynes-projects.vercel.app/',
     },
-    {
-      title: 'Fizzi',
-      category: 'popular',
-      description:
-        'Interactive animated product experience with immersive transitions and smooth effects.',
-      image: '/lemon-lime.png',
-      tech: ['EJS', 'JavaScript', 'CSS'],
-      link: 'https://fizzi-ejs.vercel.app/',
-    },
-    {
-      title: 'Smart-Farms',
-      category: 'popular',
-      description:
-        'AI-powered farming tools using drawnes and machines',
-      image: '/Pic 10.jpg',
-      tech: ['Next.js', 'OpenAI', 'Prisma'],
-      link:
-        'https://smart-farms-2v7n-1dx8ewysv-hudsonwaynes-projects.vercel.app/',
-    },
-    {
-      title: 'Job Platform',
-      category: 'following',
-      description:
-        'Scalable recruitment platform with recruiter dashboards and AI candidate matching.',
-      image:
-        'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg',
-      tech: ['Next.js', 'Supabase', 'Tailwind'],
-      link: '#',
-    },
-    {
-      title: 'Developer Portfolio',
-      category: 'latest',
-      description:
-        'Premium animated developer portfolio with cinematic UI and interactive experiences.',
-      image:
-        'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg',
-      tech: ['React', 'Framer Motion', 'Tailwind'],
-      link: '#',
-    },
   ];
 
-  const filters = [
-    'all',
-    'popular',
-    'latest',
-    'following',
-    'upcoming',
-  ];
+  const filters = ['all', 'popular', 'latest', 'following', 'upcoming'];
 
   const filteredProjects =
     activeFilter === 'all'
@@ -150,7 +105,7 @@ const Home = () => {
       <FloatingTechIcons />
 
       <main className="relative z-20 pt-20">
-        <div className="pt-10">
+        <div className="pt-20">
 
           {/* HERO SECTION */}
           <section className="min-h-screen flex items-center px-6 lg:px-8 py-20">
@@ -163,13 +118,9 @@ const Home = () => {
                 transition={{ duration: 0.8 }}
               >
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6 }}
                   className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/80 backdrop-blur-xl border border-white/40 shadow-lg mb-8"
                 >
                   <Sparkles className="w-5 h-5 text-pink-500" />
-
                   <span className="font-semibold text-gray-700">
                     Full-Stack Engineer & AI Builder
                   </span>
@@ -189,52 +140,31 @@ const Home = () => {
                   .
                 </h1>
 
-                <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mb-10">
-                  Built for turning “this should work” into “fixed it” —
-                  powered by caffeine, console logs, and unreasonable optimism
-                  ☕💻🔥😅
+                <p className="text-xl text-gray-600 mb-10">
+                  Built for turning “this should work” into “fixed it” — powered by caffeine, console logs, and unreasonable optimism ☕💻🔥😅
                 </p>
 
                 <div className="flex flex-wrap gap-5">
 
-                  <motion.button
+                  {/* ✅ WHATSAPP BUTTON FIXED */}
+                  <motion.a
+                    href="https://wa.me/263715639012"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.05, y: -4 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-7 py-4 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-xl flex items-center gap-3 font-semibold"
+                    className="px-7 py-4 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-white shadow-xl flex items-center gap-3 font-semibold"
                   >
                     <Mail className="w-5 h-5" />
                     Contact Me
-                  </motion.button>
+                  </motion.a>
 
                   <motion.button
                     whileHover={{ scale: 1.05, y: -4 }}
-                    whileTap={{ scale: 0.95 }}
                     className="px-7 py-4 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-xl text-gray-700 flex items-center gap-3 font-semibold"
                   >
                     <Download className="w-5 h-5 text-purple-500" />
                     Download Resume
                   </motion.button>
-
-                </div>
-
-                {/* EXTRA BADGES */}
-                <div className="flex flex-wrap gap-4 mt-8">
-
-                  <motion.div
-                    whileHover={{ scale: 1.05, y: -4 }}
-                    className="px-6 py-4 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-xl flex items-center gap-3 font-semibold"
-                  >
-                    <Rocket className="w-5 h-5" />
-                    Production Ready
-                  </motion.div>
-
-                  <motion.div
-                    whileHover={{ scale: 1.05, y: -4 }}
-                    className="px-6 py-4 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/40 shadow-xl text-gray-700 flex items-center gap-3 font-semibold"
-                  >
-                    <Cpu className="w-5 h-5 text-pink-500" />
-                    AI + SaaS Systems
-                  </motion.div>
 
                 </div>
               </motion.div>
@@ -249,22 +179,14 @@ const Home = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-pink-300/40 to-purple-300/40 blur-3xl rounded-full"></div>
 
                 <motion.img
-                  animate={{
-                    y: [0, -12, 0],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                  }}
+                  animate={{ y: [0, -12, 0] }}
+                  transition={{ duration: 4, repeat: Infinity }}
                   src={Wayne1}
                   alt="Wayne"
                   className="relative z-10 w-[340px] lg:w-[450px] h-[340px] lg:h-[450px] object-cover rounded-[40px] shadow-2xl border-4 border-white"
                 />
 
                 <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
                   className="absolute -bottom-8 -left-6 bg-white/80 backdrop-blur-xl border border-white/40 shadow-2xl rounded-3xl p-5 z-20"
                 >
                   <div className="flex items-center gap-4">
@@ -277,7 +199,6 @@ const Home = () => {
                       <h3 className="font-bold text-gray-900">
                         Building Daily
                       </h3>
-
                       <p className="text-gray-600 text-sm">
                         SaaS • AI • Full-Stack
                       </p>
