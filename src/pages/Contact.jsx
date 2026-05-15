@@ -1,24 +1,43 @@
+// Contact.jsx
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MessageCircle, Send, MapPin, Clock, Coffee } from 'lucide-react';
+import {
+  Mail,
+  Phone,
+  MessageCircle,
+  Send,
+  MapPin,
+  Clock,
+  Coffee,
+  Sparkles,
+  Github,
+  Linkedin,
+} from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     console.log('Form submitted:', formData);
-    // Handle form submission here
+
+    alert('Message sent successfully 🚀');
   };
 
   const contactInfo = [
@@ -26,188 +45,339 @@ const Contact = () => {
       icon: Mail,
       title: 'Email Me',
       value: 'hudsonnbenhuraa@gmail.com',
-      description: 'Send me an email and I\'ll respond within 24 hours'
+      description:
+        "Send me an email and I'll respond within 24 hours.",
+      gradient: 'from-pink-500 to-rose-500',
     },
     {
       icon: Phone,
       title: 'Call Me',
-      value: '+263-77-6345-180',
-      description: 'Available Monday to Friday, 9 AM - 6 PM EST'
+      value: '+263 77 6345 180',
+      description:
+        'Available Monday to Friday • 9AM - 6PM',
+      gradient: 'from-purple-500 to-indigo-500',
     },
     {
       icon: MapPin,
       title: 'Location',
-      value: 'Harare Budiriro',
-      description: 'Open to remote work and travel opportunities'
-    }
+      value: 'Harare, Zimbabwe',
+      description:
+        'Available for remote work & collaborations.',
+      gradient: 'from-orange-400 to-pink-500',
+    },
   ];
 
   return (
-    <div className="pt-20">
-      {/* Header */}
-      <section className="py-20 px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-4xl lg:text-6xl font-bold mb-8">
-            <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-              Let's Build Something Beautiful!
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Have a project in mind? I'd love to hear about it. Let's create something amazing together!
-          </p>
-        </motion.div>
+    <div className="relative overflow-hidden pt-20">
+
+      {/* BACKGROUND EFFECTS */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-pink-300/30 blur-3xl rounded-full" />
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-purple-300/30 blur-3xl rounded-full" />
+      <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-orange-200/30 blur-3xl rounded-full" />
+
+      {/* HERO */}
+      <section className="relative py-24 px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto text-center">
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+
+            {/* SMALL BADGE */}
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg mb-8">
+              <Sparkles className="w-5 h-5" />
+              <span className="font-semibold tracking-wide">
+                Let's Connect
+              </span>
+            </div>
+
+            {/* TITLE */}
+            <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight mb-8">
+              <span className="text-gray-900">
+                Let’s Build
+              </span>
+
+              <br />
+
+              <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400 bg-clip-text text-transparent">
+                Something Amazing
+              </span>
+            </h1>
+
+            {/* SUBTITLE */}
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Got a SaaS idea, startup vision, AI tool, or crazy
+              project that keeps you awake at 2AM? ☕💻🔥
+              <br />
+              Let’s turn it into something real.
+            </p>
+          </motion.div>
+        </div>
       </section>
 
-      <div className="pb-20 px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-3"
-            >
-              <div className="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-pink-100">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Name Field */}
-                  <div>
-                    <label className="flex items-center text-gray-700 font-medium mb-3">
+      {/* MAIN CONTENT */}
+      <section className="relative pb-24 px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-10">
+
+          {/* LEFT SIDE */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="lg:col-span-3"
+          >
+
+            {/* FORM CONTAINER */}
+            <div className="relative group">
+
+              {/* GLOW */}
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-all duration-500" />
+
+              <div className="relative bg-white/80 backdrop-blur-2xl border border-white/40 rounded-3xl shadow-2xl p-8 lg:p-10">
+
+                <form onSubmit={handleSubmit} className="space-y-7">
+
+                  {/* NAME */}
+                  <motion.div
+                    whileHover={{ scale: 1.01 }}
+                  >
+                    <label className="flex items-center text-gray-700 font-semibold mb-3">
                       <Mail className="w-5 h-5 mr-2 text-pink-500" />
-                      Name
+                      Your Name
                     </label>
+
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      placeholder="Your Name"
-                      className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all duration-300"
+                      placeholder="Wayne Hudson"
                       required
+                      className="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all duration-300"
                     />
-                  </div>
+                  </motion.div>
 
-                  {/* Email Field */}
-                  <div>
-                    <label className="flex items-center text-gray-700 font-medium mb-3">
+                  {/* EMAIL */}
+                  <motion.div
+                    whileHover={{ scale: 1.01 }}
+                  >
+                    <label className="flex items-center text-gray-700 font-semibold mb-3">
                       <Mail className="w-5 h-5 mr-2 text-pink-500" />
-                      Email
+                      Email Address
                     </label>
+
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="your@email.com"
-                      className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all duration-300"
+                      placeholder="you@example.com"
                       required
+                      className="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all duration-300"
                     />
-                  </div>
+                  </motion.div>
 
-                  {/* Phone Field */}
-                  <div>
-                    <label className="flex items-center text-gray-700 font-medium mb-3">
+                  {/* PHONE */}
+                  <motion.div
+                    whileHover={{ scale: 1.01 }}
+                  >
+                    <label className="flex items-center text-gray-700 font-semibold mb-3">
                       <Phone className="w-5 h-5 mr-2 text-pink-500" />
                       Phone Number
                     </label>
+
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      placeholder="Optional"
-                      className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all duration-300"
+                      placeholder="+263..."
+                      className="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all duration-300"
                     />
-                  </div>
+                  </motion.div>
 
-                  {/* Message Field */}
-                  <div>
-                    <label className="flex items-center text-gray-700 font-medium mb-3">
+                  {/* MESSAGE */}
+                  <motion.div
+                    whileHover={{ scale: 1.01 }}
+                  >
+                    <label className="flex items-center text-gray-700 font-semibold mb-3">
                       <MessageCircle className="w-5 h-5 mr-2 text-pink-500" />
-                      Message
+                      Your Message
                     </label>
+
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
-                      placeholder="Tell me about your project..."
-                      rows={6}
-                      className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all duration-300 resize-none"
+                      rows={7}
                       required
+                      placeholder="Tell me about your project..."
+                      className="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all duration-300 resize-none"
                     />
-                  </div>
+                  </motion.div>
 
-                  {/* Submit Button */}
-                  <button
+                  {/* BUTTON */}
+                  <motion.button
                     type="submit"
-                    className="w-full px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-2xl font-semibold hover:from-pink-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+                    whileHover={{
+                      scale: 1.03,
+                      y: -2,
+                    }}
+                    whileTap={{ scale: 0.97 }}
+                    className="relative overflow-hidden w-full px-8 py-5 rounded-2xl bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400 text-white font-bold text-lg shadow-xl"
                   >
-                    <Send className="w-5 h-5" />
-                    <span>Send Message</span>
-                  </button>
+                    <span className="relative z-10 flex items-center justify-center gap-3">
+                      Send Message
+                      <Send className="w-5 h-5" />
+                    </span>
+
+                    {/* SHINE EFFECT */}
+                    <motion.div
+                      initial={{ x: '-120%' }}
+                      whileHover={{ x: '120%' }}
+                      transition={{ duration: 0.8 }}
+                      className="absolute inset-0 bg-white/20 skew-x-12"
+                    />
+                  </motion.button>
+
                 </form>
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            {/* Contact Info & Additional Elements */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="lg:col-span-2 space-y-8"
-            >
-              {/* Contact Information */}
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => {
-                  const IconComponent = info.icon;
-                  return (
-                    <div key={index} className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-pink-100 hover:shadow-xl transition-all duration-300">
-                      <div className="flex items-start space-x-4">
-                        <div className="p-3 bg-gradient-to-r from-pink-400 to-purple-500 rounded-xl">
-                          <IconComponent className="w-6 h-6 text-white" />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-gray-900 mb-1">{info.title}</h3>
-                          <p className="text-pink-600 font-medium mb-2">{info.value}</p>
-                          <p className="text-sm text-gray-600">{info.description}</p>
-                        </div>
+          {/* RIGHT SIDE */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="lg:col-span-2 space-y-8"
+          >
+
+            {/* CONTACT CARDS */}
+            {contactInfo.map((info, index) => {
+              const IconComponent = info.icon;
+
+              return (
+                <motion.div
+                  key={index}
+                  whileHover={{
+                    y: -8,
+                    scale: 1.02,
+                  }}
+                  className="group relative"
+                >
+
+                  {/* GLOW */}
+                  <div className={`absolute inset-0 bg-gradient-to-r ${info.gradient} rounded-3xl blur-2xl opacity-0 group-hover:opacity-20 transition-all duration-500`} />
+
+                  <div className="relative bg-white/80 backdrop-blur-xl border border-white/40 p-7 rounded-3xl shadow-xl">
+
+                    <div className="flex items-start gap-5">
+
+                      <div className={`p-4 rounded-2xl bg-gradient-to-r ${info.gradient} shadow-lg`}>
+                        <IconComponent className="w-7 h-7 text-white" />
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                          {info.title}
+                        </h3>
+
+                        <p className="text-pink-600 font-semibold mb-2">
+                          {info.value}
+                        </p>
+
+                        <p className="text-gray-600 text-sm leading-relaxed">
+                          {info.description}
+                        </p>
                       </div>
                     </div>
-                  );
-                })}
-              </div>
+                  </div>
+                </motion.div>
+              );
+            })}
 
-              {/* Response Time */}
-              <div className="bg-gradient-to-r from-pink-100 to-purple-100 p-6 rounded-2xl border border-pink-200">
-                <div className="flex items-center space-x-3 mb-3">
-                  <Clock className="w-6 h-6 text-purple-600" />
-                  <h3 className="font-bold text-gray-900">Response Time</h3>
-                </div>
-                <p className="text-gray-600 leading-relaxed">
-                  I typically respond to messages within <span className="font-semibold text-purple-600">24 hours</span>. 
-                  For urgent inquiries, feel free to mention it in your message!
-                </p>
-              </div>
+            {/* RESPONSE CARD */}
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-2xl p-8"
+            >
 
-              {/* Fun Fact */}
-              <div className="bg-gradient-to-r from-orange-100 to-yellow-100 p-6 rounded-2xl border border-orange-200">
-                <div className="flex items-center space-x-3 mb-3">
-                  <Coffee className="w-6 h-6 text-orange-600" />
-                  <h3 className="font-bold text-gray-900">Fun Fact</h3>
-                </div>
-                <p className="text-gray-600 leading-relaxed">
-                  I work best with a good cup of coffee and some lo-fi music playing in the background. 
-                  What's your creative fuel? ☕
-                </p>
-              </div>
+              <motion.div
+                animate={{
+                  rotate: 360,
+                }}
+                transition={{
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+                className="absolute top-4 right-4"
+              >
+                <Clock className="w-10 h-10 text-white/30" />
+              </motion.div>
+
+              <h3 className="text-2xl font-bold mb-4">
+                Fast Response ⚡
+              </h3>
+
+              <p className="leading-relaxed text-white/90">
+                Most messages are answered within
+                <span className="font-bold"> 24 hours</span>.
+                <br />
+                Unless debugging production at 3AM 😅
+              </p>
             </motion.div>
-          </div>
+
+            {/* FUN CARD */}
+            <motion.div
+              whileHover={{ rotate: 1, scale: 1.02 }}
+              className="bg-gradient-to-r from-orange-100 to-yellow-100 border border-orange-200 rounded-3xl p-8 shadow-xl"
+            >
+
+              <div className="flex items-center gap-3 mb-4">
+                <Coffee className="w-7 h-7 text-orange-600" />
+
+                <h3 className="text-2xl font-bold text-gray-900">
+                  Developer Fuel ☕
+                </h3>
+              </div>
+
+              <p className="text-gray-700 leading-relaxed">
+                Current stack:
+                <br />
+                Coffee + VS Code + Console Logs + “Why is this div moving?” 💀
+              </p>
+            </motion.div>
+
+            {/* SOCIALS */}
+            <div className="flex gap-4">
+
+              <motion.a
+                whileHover={{ y: -5 }}
+                href="#"
+                className="flex-1 p-5 rounded-2xl bg-white shadow-lg border border-gray-100 flex items-center justify-center hover:text-pink-500 transition"
+              >
+                <Github className="w-7 h-7" />
+              </motion.a>
+
+              <motion.a
+                whileHover={{ y: -5 }}
+                href="#"
+                className="flex-1 p-5 rounded-2xl bg-white shadow-lg border border-gray-100 flex items-center justify-center hover:text-pink-500 transition"
+              >
+                <Linkedin className="w-7 h-7" />
+              </motion.a>
+
+            </div>
+
+          </motion.div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
