@@ -48,7 +48,7 @@ const About = () => {
       institution: 'www.udemy.com',
       period: 'Mar 2026 - May 2026',
       description:
-        'Engineered full-stack applications, solved real-world problems, and collaborated in fast-paced agile teams to deliver production-ready software.Built real-world projects and collaborated on team-based sprints.',
+        'Built and deployed advanced AI systems using LLMs, RAG pipelines, QLoRA fine-tuning, and autonomous agents while developing scalable, production-ready applications focused on real-world problem solving.',
     },
   ];
 
